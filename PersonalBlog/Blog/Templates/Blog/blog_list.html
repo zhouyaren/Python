@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Blogs</title>
+</head>
+<body>
+<div>
+    <h1 align="center">My Blogs</h1>
+</div>
+
+{% for blog in blogs %}
+    <div>
+        <div>
+            <a href="{%  url 'get_blogs_details' blog.id %}"> <h2>{{ blog.title }} </h2></a>
+        </div>
+        <div>
+            <span style="color: #ff9900;"> {{ blog.catagory.name }}</span>
+            <span style="color: #ff9900;"> {{ blog.author }}</span>
+            <span style="color: #ff9900;"> {{ blog.created |date:"Y-m-d H:i" }}</span>
+        </div>
+        <div>
+            {{ blog.content | truncatechars:100 }}
+
+        </div>
+    </div>
+{% endfor %}
+
+
+</body>
+</html>
